@@ -26,16 +26,20 @@
               <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
               <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" , class:"btn btn-sm btn-danger" %></td>
             <% end %>
-
-            <%= render 'favorites/iine', book: @book %>
-
+            <td id = "favorites<%= @book.id %>" >
+              <%= render 'favorites/iine', book: @book %>
+            </td>
             <td>
               コメント件数 : <%= @book.book_comments.count %>
             </td>
           </tr>
         </tbody>
       </table>
-     <%= render 'book_comments/comments' %>
+
+      <div id = "book_comments">
+       <%= render 'book_comments/comments', book: @book, book_comment: @book_comment %>
+      </div>
+
     </div>
   </div>
 </div>
